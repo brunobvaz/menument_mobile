@@ -1,9 +1,22 @@
-// App.js
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
 import * as SplashScreen from 'expo-splash-screen';
 import CustomSplashScreen from './screens/onboarding/CustomSplashScreen';
-import WelcomeScreen from './screens/onboarding/WelcomeScreen';
+import NonAuthRoutes from './navigation/NonAuthRoutes';
+import AuthRoutes from './navigation/AuthRoutes'; // se tiver
+import { AuthProvider, useAuth } from './context/AuthContext';
+
+function Root() {
+  const { user, authChecked } = useAuth();
+
+  if (!authChecked) return <CustomSplashScreen />;
+
+  return (
+    <NavigationContainer>
+      {user ? <AuthRoutes /> : <NonAuthRoutes />}
+    </NavigationContainer>
+  );
+}
 
 export default function App() {
   const [appReady, setAppReady] = useState(false);
@@ -12,30 +25,22 @@ export default function App() {
     const prepare = async () => {
       try {
         await new Promise(resolve => setTimeout(resolve, 3000));
-      } catch (e) {
-        console.warn(e);
       } finally {
         setAppReady(true);
         await SplashScreen.hideAsync();
       }
     };
-
     prepare();
   }, []);
 
   if (!appReady) return <CustomSplashScreen />;
 
   return (
-    <WelcomeScreen />
+    <AuthProvider>
+      <Root />
+    </AuthProvider>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
 

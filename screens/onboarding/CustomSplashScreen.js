@@ -1,35 +1,18 @@
-// components/CustomSplashScreen.js
 import React from 'react';
-import { Image, StyleSheet } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
+import { Image } from 'react-native';
+import ReusableGradient from '..//shared/ReusableGradient';
+import SplashStyles from '../../layout/styles/SplashStyles';
 
 const CustomSplashScreen = () => {
   return (
-    <LinearGradient
-      colors={['#f99f2b', '#eb436c']}
-      start={{ x: 0, y: 0 }}
-      end={{ x: 1, y: 0 }}
-      style={styles.container}
-    >
+    <ReusableGradient contentStyle={SplashStyles.container}>
       <Image
         source={require('../../assets/splash-transparent.png')}
-        style={styles.logo}
+        style={SplashStyles.logo}
         resizeMode="contain"
       />
-    </LinearGradient>
+    </ReusableGradient>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  logo: {
-    width: '60%',
-    height: '40%',
-  },
-});
 
 export default CustomSplashScreen;

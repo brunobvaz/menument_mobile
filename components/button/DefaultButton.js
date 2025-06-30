@@ -47,7 +47,7 @@ const DefaultButton = ({
                     {icon && <View style={styles.iconContainer}>{icon}</View>}
                     <Text style={textStyles}>{title}</Text>
                 </View>
-       
+      
             :
             <LinearGradient
             colors={gradientColors}
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
         overflow: 'hidden',
     },
     outline: {
-        backgroundColor: COLORS.white,
+        backgroundColor: COLORS.gray,
         paddingHorizontal: 18,
         paddingVertical: 12,
     },
