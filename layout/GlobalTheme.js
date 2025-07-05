@@ -2,7 +2,8 @@ import { Dimensions } from "react-native";
 const { width, height } = Dimensions.get('screen');
 
 export const COLORS = {
-    primary: "#FE9063",
+    //primary: "#FE9063",
+    primary: "#f99f2b",
     primary2: "#14b987",
     primary3: "#337bff",
     primary4: "#ff50a2",
@@ -134,10 +135,21 @@ export const ICONS = {
 export const IMAGES = {
 
     // user1: require('../assets/images/profile.png'),
-    // foodPattern1 : require('../assets/images/pattern/pattern1.png'),
+     foodPattern1 : require('../assets/pattern1.png'),
 }
 
+export const categoriesING = [
+    { nome: 'All' },
+    { nome: 'Fruit' },
+    { nome: 'Vegetable' },
+    { nome: 'Fish' },
+    { nome: 'Meat' },
+    { nome: 'Dairy' },
+    { nome: 'Grains' },
+]
 
-const appTheme = { COLORS, SIZES, FONTS, ICONS, IMAGES }
+
+
+const appTheme = { COLORS, SIZES, FONTS, ICONS, IMAGES,categoriesING  }
 
 export default appTheme;
